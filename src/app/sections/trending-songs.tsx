@@ -1,5 +1,6 @@
+// TODO: WRAP THE CARD BY A BUTTON AND CREATE AN ATOM FOR SONG 
+// FIXME: SEND THE SONG ID TO THE PARENT FROM SERVER SIDE AND THEN FETCH THE SONG FROM THE SERVER 
 import { Card } from "@/components/ui/card";
-import { PageHeader, PageHeaderHeading } from "@/components/ui/page-components";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";

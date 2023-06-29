@@ -7,7 +7,7 @@ export const gethomepageData = async () => {
         data,
       }: {
         data: HomepageResponse;
-      } = await music("/modules?language=hindi");
+      } = await music("/modules?language=hindi,english");
       return data;
     } catch (error) {
       console.log(error);

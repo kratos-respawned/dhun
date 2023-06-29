@@ -25,13 +25,19 @@ export const Sidebar = () => {
             )}
           >
             {" "}
-            <Icons.home className="fill-orange-400 dark:fill-white" /> <span className="">Home</span>{" "}
+            <Icons.home
+              className={cn(
+                "",
+                pathname === "/" && ["fill-orange-400 dark:fill-white"]
+              )}
+            />{" "}
+            <span className="">Home</span>{" "}
           </Link>
           <Link
-            href="/error"
+            href="/comingsoon"
             className={cn(
               " w-full  p-1.5 py-2   leading-[0px] rounded-md font-medium flex items-center gap-x-4  ",
-              pathname === "/error" && [
+              pathname === "/Categories" && [
                 "bg-white dark:bg-orange-400 focus:ring-2 ring-0 ring-orange-400 dark:ring-white dark:text-white text-orange-400  outline-none border-none",
               ]
             )}
@@ -40,10 +46,10 @@ export const Sidebar = () => {
             <Icons.apps /> <span className="">Categories</span>{" "}
           </Link>
           <Link
-            href="/error"
+            href="/comingsoon"
             className={cn(
               " w-full  p-1.5 py-2   leading-[0px] rounded-md font-medium flex items-center gap-x-4  ",
-              pathname === "/error" && [
+              pathname === "/Saved" && [
                 "bg-white dark:bg-orange-400 focus:ring-2 ring-0 ring-orange-400 dark:ring-white dark:text-white text-orange-400  outline-none border-none",
               ]
             )}
@@ -56,10 +62,18 @@ export const Sidebar = () => {
       <div className="mt-16 font-normal space-y-4">
         <h2 className="text-muted-foreground space-y-3 ">Playlists</h2>
         <div className="space-y-4 font-inter text-secondary-foreground text-sm ">
-         <Link href="/error" className="block">Let's Play - Arijit Singh</Link>
-         <Link href="/error" className="block">2000s Duets</Link>
-         <Link href="/error" className="block">Let's Play - Kumar Sanu</Link>
-         <Link href="/error" className="block">Best Of Indipop</Link>
+          <Link href="/comingsoon" className="block">
+            Let's Play - Arijit Singh
+          </Link>
+          <Link href="/comingsoon" className="block">
+            2000s Duets
+          </Link>
+          <Link href="/comingsoon" className="block">
+            Let's Play - Kumar Sanu
+          </Link>
+          <Link href="/comingsoon" className="block">
+            Best Of Indipop
+          </Link>
         </div>
       </div>
     </aside>

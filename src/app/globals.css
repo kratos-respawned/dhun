@@ -84,3 +84,11 @@
 body {
   overscroll-behavior: none;
 }
+.min-height-screen{
+  min-height: 100lvh;
+  min-height: 100vh;
+}
+.max-height-screen{
+  max-height: 100lvh;
+  max-height: 100vh;
+}
