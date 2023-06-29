@@ -47,7 +47,7 @@ const ChartCard = ({
     "https://via.placeholder.com/150";
   return (
     <Card
-      className={cn(" overflow-clip border-none rounded-none  w-[200px] mb-4", className)}
+      className={cn(" overflow-clip border-none rounded-none  w-[200px] pb-3 ", className)}
     >
       <div className="overflow-hidden rounded-md">
         <Image

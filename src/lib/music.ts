@@ -1,6 +1,6 @@
 import axios from "axios";
 
 const music=axios.create({
-    baseURL:"https://savan.vercel.app/",
+    baseURL:"https://saavn.me/",
 })
 export {music};

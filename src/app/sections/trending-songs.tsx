@@ -16,7 +16,7 @@ export const TrendingSongs = async () => {
   if (data?.data.trending.albums) {
     list = [...list, ...data?.data.trending.albums];
   }
-  // randomize the list
+  
   list.sort(() => Math.random() - 0.5);
   return (
     <section className="space-y-4 border-none">
@@ -25,9 +25,8 @@ export const TrendingSongs = async () => {
       </div>
       <Separator className="my-4" />
       <ScrollArea>
-        <div className=" flex gap-4">
+        <div className=" flex gap-4  ">
           {list.map((item) => {
-            console.log(item.type);
             if (item.type === "song") {
               return <TrendingSongCard key={item.id} song={item as Song} />;
             } else {
@@ -45,8 +44,7 @@ const TrendingSongCard = ({ song }: { song: Song }) => {
     <Card
       key={song.id}
       className={cn(
-        " overflow-clip border-none  rounded-none w-[250px] mb-4",
-        "hover:shadow-lg"
+        " overflow-clip border-none  rounded-none w-[250px] "
       )}
     >
       <div className="overflow-hidden rounded-md">
@@ -82,8 +80,7 @@ const TrendingAlbumCard = ({ album }: { album: Album }) => {
   return (
     <Card
       className={cn(
-        " overflow-clip border-none rounded-none w-[250px] mb-4",
-        "hover:shadow-lg"
+        " overflow-clip border-none rounded-none w-[250px] "
       )}
     >
       <div className="overflow-hidden rounded-md  ">

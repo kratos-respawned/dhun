@@ -48,7 +48,7 @@ const AlbumCard = ({
     "https://via.placeholder.com/150";
   return (
     <Card
-      className={cn(" overflow-clip border-none rounded-none  w-[250px] mb-4", className)}
+      className={cn(" overflow-clip border-none rounded-none  w-[250px] ", className)}
     >
       <div className="overflow-hidden rounded-md">
         <Image

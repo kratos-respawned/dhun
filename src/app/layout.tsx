@@ -6,7 +6,9 @@ import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Icons } from "@/components/icons";
 import { ModeToggle } from "@/components/change-mode";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { Sidebar } from "@/components/sidebar";
+
+
 const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -32,24 +34,16 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "  bg-background font-sans antialiased min-h-screen  ",
+          "  bg-background  font-sans antialiased min-h-screen  ",
           fontSans.variable,
           fontHeading.variable
         )}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          
-            
-            <header className="flex items-center justify-between border-b p-3 px-12">
-              <nav className="flex  text-3xl items-center font-semibold">
-                <Icons.logo className=" scale-110 invert dark:invert-0  transition-all duration-150" />
-              </nav>
-              <nav className="flex items-center  ">
-                <ModeToggle />
-              </nav>
-            </header>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+          <div className="md:grid grid-cols-7 lg:grid-cols-11 overflow-hidden max-h-screen">
+            <Sidebar  />
             {children}
-          
+            </div>
         </ThemeProvider>
       </body>
     </html>

@@ -44,7 +44,7 @@ const PlaylistCard = ({
   const imageUrl = playlist.image[2]?.link || playlist.image[1]?.link || playlist.image[0]?.link || "https://via.placeholder.com/150";
   return (
     <Card
-      className={cn(" overflow-clip border-none rounded-none  w-[200px] mb-4", className)}
+      className={cn(" overflow-clip border-none rounded-none  w-[200px] ", className)}
     >
       <div className="overflow-hidden rounded-md">
         <Image
