@@ -1,4 +1,23 @@
-import { Laptop, Moon, SunMedium, Music3, LucideProps, Music2, Home, LucideHome, LayoutGrid, Bookmark, MenuSquare } from "lucide-react";
+import {
+  Heart,
+  PlusCircle,
+  SkipBack,
+  Laptop,
+  Moon,
+  SunMedium,
+  Music2,
+  Home,
+  LayoutGrid,
+  Bookmark,
+  MenuSquare,
+  Play,
+  Pause,
+  SkipForward,
+  Loader2,
+  Volume2,
+  Volume1,
+  VolumeX,
+} from "lucide-react";
 // const Logo = (props: LucideProps) => (
 //   <>
 //     <svg
@@ -25,9 +44,19 @@ export const Icons = {
   moon: Moon,
   laptop: Laptop,
   // dhun: Music3,
-  dhun: Music2 ,
-  home:Home,
-  apps:LayoutGrid,
-  save:Bookmark,
-  menu:MenuSquare
+  dhun: Music2,
+  home: Home,
+  apps: LayoutGrid,
+  save: Bookmark,
+  menu: MenuSquare,
+  play: Play,
+  pause: Pause,
+  next: SkipForward,
+  prev: SkipBack,
+  like: Heart,
+  whishlist: PlusCircle,
+  loader:Loader2,
+  highVolume:Volume2,
+  lowVolume:Volume1,
+  mute:VolumeX,
 };

@@ -92,3 +92,6 @@ body {
   max-height: 100lvh;
   max-height: 100vh;
 }
+.shadow-top{
+  box-shadow: 0 -10px 10px 0 rgba(var(--tw-shadow));
+}

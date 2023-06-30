@@ -45,7 +45,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <div className="md:grid grid-cols-7 lg:grid-cols-11 overflow-hidden min-height-screen max-height-screen ">
             <Sidebar />
-            <main className="container col-span-5 lg:col-span-9 max-height-screen overflow-y-scroll px-4  pb-28  ">
+            <main className="container col-span-5 lg:col-span-9 max-height-screen overflow-y-scroll px-4  pb-[100px]  ">
               <Header />
               <SearchBox className="sm:hidden flex-1 w-full mt-4 " />
               {children}
