@@ -1,6 +1,5 @@
 import { ModeToggle } from "./change-mode";
 import { Icons } from "./icons";
-import { Navbar } from "./navigation-bar";
 import { SearchBox } from "./searchBox";
 
 export const Header = () => {
