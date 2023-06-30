@@ -2,10 +2,7 @@ import { Inter as FontSans } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import { cn } from "@/lib/utils";
-
 import { ThemeProvider } from "@/components/theme-provider";
-import { Icons } from "@/components/icons";
-import { ModeToggle } from "@/components/change-mode";
 import { Sidebar } from "@/components/sidebar";
 import { Header } from "@/components/header";
 import { SearchBox } from "@/components/searchBox";
@@ -43,9 +40,9 @@ export default function RootLayout({
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-          <div className="md:grid grid-cols-7 lg:grid-cols-11 overflow-hidden min-height-screen max-height-screen ">
+          <div className="  md:grid grid-cols-7 lg:grid-cols-11 overflow-hidden min-height-screen max-height-screen ">
             <Sidebar />
-            <main className="container col-span-5 lg:col-span-9 max-height-screen overflow-y-scroll px-4  pb-[100px]  ">
+            <main className=" col-span-5 lg:col-span-9 max-height-screen overflow-y-scroll px-4  pb-[100px]  ">
               <Header />
               <SearchBox className="sm:hidden flex-1 w-full mt-4 " />
               {children}
