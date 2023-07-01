@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Icons } from "./icons";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
+import { buttonVariants } from "./ui/button";
 
 export const Sidebar = () => {
   const pathname = usePathname();
@@ -33,11 +34,14 @@ export const Sidebar = () => {
             />{" "}
             <span className="">Home</span>{" "}
           </Link>
+
           <Link
-            href="/comingsoon"
+            // href="/comingsoon"
+            href="/album"
             className={cn(
               " w-full  p-1.5 py-2   leading-[0px] rounded-md font-medium flex items-center gap-x-4  ",
-              pathname === "/Categories" && [
+              // pathname === "/Categories" && [
+              pathname === "/album" && [
                 "bg-white dark:bg-orange-400 focus:ring-2 ring-0 ring-orange-400 dark:ring-white dark:text-white text-orange-400  outline-none border-none",
               ]
             )}

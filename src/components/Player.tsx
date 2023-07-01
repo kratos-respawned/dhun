@@ -1,4 +1,4 @@
-import { useEffect,  useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import useSound from "use-sound";
 import { Card } from "./ui/card";
 import { cn } from "@/lib/utils";
@@ -8,7 +8,17 @@ import { Icons } from "./icons";
 import { Skeleton } from "./ui/skeleton";
 import { Slider } from "./ui/slider";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
-export const Player = ({ url }: { url: string }) => {
+export const Player = ({
+  url,
+  album,
+  imageURL,
+  title,
+}: {
+  url: string;
+  imageURL: string;
+  title: string;
+  album: string;
+}) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [volume, setVolume] = useState(0.5);
@@ -17,6 +27,10 @@ export const Player = ({ url }: { url: string }) => {
   const [play, { pause, duration, sound }] = useSound(link, {
     onload: () => {
       setIsLoading(false);
+    },
+    onend: () => {
+      setIsPlaying(false);
+      console.log("end");
     },
     volume: volume,
   });
@@ -45,13 +59,17 @@ export const Player = ({ url }: { url: string }) => {
       const position: number = sound?.seek();
       setBarPosition(position);
     }, 1000);
-    return () => {clearInterval(timer)
-    sound?.stop();
+    return () => {
+      clearInterval(timer);
+      sound?.stop();
     };
   }, [sound]);
 
   return (
-    <Card key={url} className="fixed bottom-0 pb-0 z-50  bg-muted dark:bg-slate-900 h-[70px] left-0 right-0  ">
+    <Card
+      key={url}
+      className="fixed bottom-0 pb-0 z-50 rounded-none  bg-muted dark:bg-slate-900 h-[70px] left-0 right-0  "
+    >
       <div className="relative w-full h-full grid grid-cols-3 justify-between ">
         {/* left side */}
         <div className="flex gap-x-4 max-w-xs items-center">
@@ -59,7 +77,7 @@ export const Player = ({ url }: { url: string }) => {
             <Skeleton className=" h-[70px] w-[70px] " />
           ) : (
             <Image
-              src={"https://c.saavncdn.com/274/Rockstar-2011-150x150.jpg"}
+              src={imageURL}
               width={70}
               height={70}
               className="w-[70px] h-[70px]"
@@ -75,8 +93,8 @@ export const Player = ({ url }: { url: string }) => {
               </>
             ) : (
               <>
-                <p className="text-sm font-cal tracking-wide">TITLE</p>
-                <p className="text-xs">Arijit Singh</p>
+                <p className="text-sm font-cal tracking-wide">{title}</p>
+                <p className="text-xs">{album}</p>
               </>
             )}
           </div>

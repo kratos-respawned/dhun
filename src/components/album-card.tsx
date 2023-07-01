@@ -1,7 +1,8 @@
+"use client"
 import Image from "next/image";
 import { Card } from "./ui/card";
 import { cn } from "@/lib/utils";
-
+import { useRouter } from "next/navigation";
 interface AlbumCardProps extends React.HTMLAttributes<HTMLDivElement> {
   imageURL: {
     link: string;
@@ -34,6 +35,7 @@ export const AlbumCard = ({
   language,
   artists,
 }: AlbumCardProps) => {
+  const router=useRouter();
   const imgURL =
     imageURL[2].link ||
     imageURL[1].link ||
@@ -41,6 +43,12 @@ export const AlbumCard = ({
     "https://via.placeholder.com/150";
   return (
     <Card
+    onClick={()=>{
+      if(type==="playlist")
+      router.push(`/album/${id}-playlist`)
+      else
+      router.push(`/album/${id}-album`)
+    }}
       className={cn(
         " overflow-clip border-none rounded-none w-[250px] ",
         className
@@ -67,7 +75,7 @@ export const AlbumCard = ({
       </div>
       <div className="space-y-1 text-sm">
         <a href={url}>
-          <h3 className="font-medium leading-none mt-4 line-clamp-1">
+          <h3 className="font-medium  mt-2 line-clamp-1">
             {title.split("(")[0]}
           </h3>
         </a>

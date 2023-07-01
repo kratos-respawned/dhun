@@ -79,10 +79,15 @@
   }
 }
 
-/*  disable overscroll */
-
+*{
+  -webkit-tap-highlight-color: transparent;
+}
 body {
   overscroll-behavior: none;
+}
+.main-layout{
+  display: flex;
+  flex-direction: column;
 }
 .min-height-screen {
   min-height: 100lvh;
