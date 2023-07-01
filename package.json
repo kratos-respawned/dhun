@@ -32,11 +32,13 @@
     "react-dom": "18.2.0",
     "react-wrap-balancer": "^1.0.0",
     "sharp": "^0.32.1",
+    "swr": "^2.2.0",
     "tailwind-merge": "^1.13.2",
     "tailwindcss": "3.3.2",
     "tailwindcss-animate": "^1.0.6",
     "typescript": "5.1.5",
-    "use-sound": "^4.0.1"
+    "use-sound": "^4.0.1",
+    "zustand": "^4.3.8"
   },
   "devDependencies": {
     "eslint": "8.43.0",

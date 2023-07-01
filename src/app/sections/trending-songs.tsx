@@ -1,12 +1,11 @@
-// TODO: WRAP THE CARD BY A BUTTON AND CREATE AN ATOM FOR SONG
-// FIXME: SEND THE SONG ID TO THE PARENT FROM SERVER SIDE AND THEN FETCH THE SONG FROM THE SERVER
+// TODO : implement albums and playlist features
+//  FIXME: check for memory leaks
 import { AlbumCard } from "@/components/album-card";
 import { SongCard } from "@/components/song-card";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { Album3 as Album, Song } from "@/typings/homepage";
 import { gethomepageData } from "@/utils/get-home-data";
-
 
 export const TrendingSongs = async () => {
   const data = await gethomepageData();

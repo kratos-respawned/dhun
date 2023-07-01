@@ -1,6 +1,8 @@
+"use client";
 import { cn } from "@/lib/utils";
 import { Card } from "./ui/card";
 import Image from "next/image";
+import { useSongStore } from "@/store/song-store";
 interface SongProps extends React.HTMLAttributes<HTMLDivElement> {
   imageURL: {
     link: string;
@@ -33,8 +35,14 @@ export const SongCard = ({
     imageURL[1].link ||
     imageURL[0].link ||
     "https://via.placeholder.com/150";
+  const setID = useSongStore((state) => state.setID);
+  const song=useSongStore((state)=>state.song)
   return (
     <Card
+      onClick={() => {
+        if(song?.id===id) return
+        setID(id);
+      }}
       className={cn(
         " overflow-clip border-none  rounded-none w-[250px] ",
         className
@@ -60,11 +68,9 @@ export const SongCard = ({
         />
       </div>
       <div className="space-y-1 text-sm ">
-        <a href={url}>
-          <h3 className="font-medium leading-none mt-4">
-            {title.split("(")[0]}
-          </h3>
-        </a>
+        {/* <a href={url}> */}
+        <h3 className="font-medium leading-none mt-4">{title.split("(")[0]}</h3>
+        {/* </a> */}
         <p className="text-xs text-muted-foreground">
           {type} •{" "}
           {artists

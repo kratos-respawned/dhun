@@ -8,6 +8,7 @@ import { Header } from "@/components/header";
 import { SearchBox } from "@/components/searchBox";
 import { TailwindIndicator } from "@/components/tailwind-indicator";
 import { Player } from "@/components/Player";
+import { PlayerWrapper } from "@/components/player-wrapper";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -48,7 +49,7 @@ export default function RootLayout({
               {children}
             </main>
           </div>
-          <Player/>
+          <PlayerWrapper/>
           <TailwindIndicator/>
         </ThemeProvider>
       </body>

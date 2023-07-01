@@ -1,5 +1,4 @@
-"use client";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect,  useRef, useState } from "react";
 import useSound from "use-sound";
 import { Card } from "./ui/card";
 import { cn } from "@/lib/utils";
@@ -9,14 +8,12 @@ import { Icons } from "./icons";
 import { Skeleton } from "./ui/skeleton";
 import { Slider } from "./ui/slider";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
-export const Player = () => {
+export const Player = ({ url }: { url: string }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [volume, setVolume] = useState(0.5);
-  const [barPostion,setBarPosition]=useState(0);
-  const [link] = useState(
-    "https://aac.saavncdn.com/479/cd8bd5b1fcd633cfd51855c327682352_48.mp4"
-  );
+  const [barPostion, setBarPosition] = useState(0);
+  const [link] = useState(url);
   const [play, { pause, duration, sound }] = useSound(link, {
     onload: () => {
       setIsLoading(false);
@@ -40,16 +37,21 @@ export const Player = () => {
       setVolume(0);
     }
   };
-  useEffect(()=>{
-    const timer= setInterval(()=>{
-      const position:number=sound.seek();
-      setBarPosition(position)
-    },1000)
-    return ()=>clearInterval(timer)
-  },[sound])
+  useEffect(() => {
+    if (isLoading) return;
+    sound.play();
+    setIsPlaying(true);
+    const timer = setInterval(() => {
+      const position: number = sound?.seek();
+      setBarPosition(position);
+    }, 1000);
+    return () => {clearInterval(timer)
+    sound?.stop();
+    };
+  }, [sound]);
 
   return (
-    <Card className="fixed bottom-0 pb-0 z-50  bg-muted dark:bg-slate-900 h-[70px] left-0 right-0  ">
+    <Card key={url} className="fixed bottom-0 pb-0 z-50  bg-muted dark:bg-slate-900 h-[70px] left-0 right-0  ">
       <div className="relative w-full h-full grid grid-cols-3 justify-between ">
         {/* left side */}
         <div className="flex gap-x-4 max-w-xs items-center">
@@ -241,17 +243,19 @@ export const Player = () => {
         </div>
 
         {/* player bar */}
-        <Slider
-          orientation="horizontal"
-          value={[barPostion]}
-          defaultValue={[0]}
-          step={1}
-          max={(duration || 0) / 1000}
-          onValueChange={(e) => {
-            sound.seek(e[0]);
-          }}
-          className="w-full h-1.5 rounded-none absolute top-0 -translate-y-1/2 player"
-        />
+        <div className="absolute top-0  -translate-y-[98%]  pt-5 pb-0 w-full ">
+          <Slider
+            orientation="horizontal"
+            value={[barPostion]}
+            defaultValue={[0]}
+            step={1}
+            max={(duration || 0) / 1000}
+            onValueChange={(e) => {
+              sound.seek(e[0]);
+            }}
+            className="w-full h-1.5 rounded-none  player"
+          />
+        </div>
       </div>
     </Card>
   );
