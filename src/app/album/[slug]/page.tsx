@@ -2,12 +2,10 @@ import { AlbumPageCard } from "@/components/album-page-card";
 import { Icons } from "@/components/icons";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { music } from "@/lib/music";
 import { AlbumData } from "@/typings/albumdata";
 import { Playlist } from "@/typings/playlist";
 import Image from "next/image";
-import Link from "next/link";
 import { Balancer } from "react-wrap-balancer";
 
 const getAlbumData = async (slug: string) => {
@@ -25,7 +23,6 @@ export default async function Page({ params }: { params: { slug: string } }) {
   let album: AlbumData | Playlist;
   try {
     album = await getAlbumData(params.slug);
-    console.log(album);
   } catch (error) {
     console.log(error);
     return <h2>Error</h2>;
@@ -36,6 +33,13 @@ export default async function Page({ params }: { params: { slug: string } }) {
     album?.data?.image[1]?.link ||
     album?.data?.image[0]?.link ||
     "https://c.saavncdn.com/editorial/FeelGoodPop_20221122034344.jpg";
+    // return(
+    //   <>
+    //   {
+    //     JSON.stringify(album)
+    //   }
+    //   </>
+    // )
   return (
     <section className="px-4  pt-4 space-y-12 mt-6 lg:space-y-0 lg:grid grid-cols-2 gap-x-4 ">
       <section className="mx-auto lg:mx-0 max-w-md ">
@@ -52,7 +56,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
             </AspectRatio>
           </div>
           <h1 className="font-cal text-2xl  mt-4 ">
-            <Balancer>{album.data.name.split("(")[0]}</Balancer>
+            <Balancer>{album.data.name.split("(")[0].replace("&#039;","'")}</Balancer>
           </h1>
           <div className="flex justify-between gap-x-2 items-center">
             <div>

@@ -69,7 +69,7 @@ export const SongCard = ({
       </div>
       <div className="space-y-1 text-sm ">
         {/* <a href={url}> */}
-        <h3 className="font-medium leading-none mt-4">{title.split("(")[0]}</h3>
+        <h3 className="font-medium leading-none mt-4">{title.split("(")[0].replace("&#039;","'")}</h3>
         {/* </a> */}
         <p className="text-xs text-muted-foreground">
           {type} •{" "}

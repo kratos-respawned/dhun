@@ -76,7 +76,7 @@ export const AlbumCard = ({
       <div className="space-y-1 text-sm">
         <a href={url}>
           <h3 className="font-medium  mt-2 line-clamp-1">
-            {title.split("(")[0]}
+            {title.split("(")[0].replace("&#039;","'")}
           </h3>
         </a>
         {songCount && (

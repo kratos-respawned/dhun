@@ -17,6 +17,7 @@ import {
   Volume2,
   Volume1,
   VolumeX,
+  Download,
 } from "lucide-react";
 // const Logo = (props: LucideProps) => (
 //   <>
@@ -59,4 +60,5 @@ export const Icons = {
   highVolume:Volume2,
   lowVolume:Volume1,
   mute:VolumeX,
+  download:Download
 };

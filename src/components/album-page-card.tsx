@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Image from "next/image";
 import { Card } from "./ui/card";
 import { Button } from "./ui/button";
@@ -20,7 +20,7 @@ export const AlbumPageCard = ({
   duration,
   image,
 }: AlbumPageCardProps) => {
-    const setSongID=useSongStore(state=>state.setID)
+  const setSongID = useSongStore((state) => state.setID);
   return (
     <Card className="border pb-0 overflow-hidden flex items-center gap-x-2 sm:gap-x-5 pr-4">
       <Image
@@ -32,7 +32,9 @@ export const AlbumPageCard = ({
       />
 
       <div className="  flex-1  ">
-        <h3 className="font-cal text-base sm:text-2xl lg:text-xl xl:text-2xl line-clamp-2">{name.split("(")[0].slice(0,22)}</h3>
+        <h3 className="font-cal text-base sm:text-2xl lg:text-xl xl:text-2xl line-clamp-2">
+          {name.split("(")[0].slice(0, 22).replace("&#039;", "'")}
+        </h3>
         <p className="text-muted-foreground text-xs sm:text-base line-clamp-1">
           {primaryArtists.slice(0, 15)}
         </p>
@@ -40,19 +42,30 @@ export const AlbumPageCard = ({
           <p className="text-muted-foreground">
             {(Number(duration) / 60).toPrecision(2)} minutes
           </p>
-          <Button onClick={()=>{
-            setSongID(id)
-          }} variant="default" className=" active:scale-90 transition-transform ml-auto" size="icon">
+          <Button
+            onClick={() => {
+              setSongID(id);
+            }}
+            variant="default"
+            className=" active:scale-90 transition-transform ml-auto"
+            size="icon"
+          >
             <Icons.play className="" />
           </Button>
         </div>
       </div>
-
-      <Button onClick={()=>{
-        setSongID(id)
-      }} variant="default" className=" active:scale-90 transition-transform sm:hidden ml-auto" size="icon">
-        <Icons.play className="" />
-      </Button>
+      
+        <Button
+          onClick={() => {
+            setSongID(id);
+          }}
+          variant="secondary"
+          className=" active:scale-90 transition-transform sm:hidden ml-auto"
+          size="icon"
+        >
+          <Icons.play className="w-4 h-4" />
+        </Button>
+      
     </Card>
   );
 };

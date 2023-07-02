@@ -13,16 +13,19 @@ export const Player = ({
   album,
   imageURL,
   title,
+  downloadURL,
 }: {
   url: string;
   imageURL: string;
   title: string;
   album: string;
+  downloadURL: string;
 }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [volume, setVolume] = useState(0.5);
   const [barPostion, setBarPosition] = useState(0);
+  const [downloading, setDownloading] = useState(false);
   const [link] = useState(url);
   const [play, { pause, duration, sound }] = useSound(link, {
     onload: () => {
@@ -148,11 +151,41 @@ export const Player = ({
         {/* right side */}
         <div className="flex justify-end items-center md:gap-x-2 pr-4">
           <Button
-            className="active:scale-90 transition-transform"
+            className="active:scale-90 hidden sm:inline-flex transition-transform"
             variant="ghost"
             size="icon"
           >
             <Icons.like className="h-4 w-4" />
+          </Button>
+          <Button
+            disabled={isLoading || downloading}
+            onClick={() => {
+              setDownloading(true);
+              const a = document.createElement("a");
+              console.log(downloadURL);
+              fetch(downloadURL).then((res) => {
+                res.blob().then((blob) => {
+                  const url = window.URL.createObjectURL(blob);
+                  a.href = url;
+                  a.download = title;
+                  setDownloading(false);
+                  a.click();
+                });
+              });
+              
+              a.remove();
+            }}
+            className="active:scale-90 transition-transform"
+            variant="ghost"
+            size="icon"
+          >
+            {downloading ? (
+              <Icons.loader
+                className={cn("h-4 w-4 transition-all animate-spin ")}
+              />
+            ) : (
+              <Icons.download className={cn(" scale-100  h-4 w-4 ")} />
+            )}
           </Button>
           <Button
             className=" hidden sm:flex active:scale-90 transition-transform"
