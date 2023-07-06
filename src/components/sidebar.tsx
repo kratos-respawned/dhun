@@ -3,16 +3,14 @@ import Link from "next/link";
 import { Icons } from "./icons";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
-import { buttonVariants } from "./ui/button";
-
 export const Sidebar = () => {
   const pathname = usePathname();
   return (
     <aside className="hidden md:block pt-8 px-4 lg:px-6 bg-muted dark:bg-slate-900  md:col-span-2 ">
-      <div className="flex justify-start gap-1 items-center ">
+      <Link href="/" className="flex justify-start gap-1 items-center ">
         <Icons.dhun size={30} />
         <p className="text-xl font-cal pt-1 ">DHUN</p>
-      </div>
+      </Link>
       <div className="mt-12 font-normal space-y-4">
         <h2 className="text-muted-foreground ">Menu</h2>
         <div className="space-y-2">

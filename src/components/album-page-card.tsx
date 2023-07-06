@@ -46,26 +46,25 @@ export const AlbumPageCard = ({
             onClick={() => {
               setSongID(id);
             }}
-            variant="default"
+            variant="secondary"
             className=" active:scale-90 transition-transform ml-auto"
             size="icon"
           >
-            <Icons.play className="" />
+            <Icons.play className="w-4 h-4" />
           </Button>
         </div>
       </div>
-      
-        <Button
-          onClick={() => {
-            setSongID(id);
-          }}
-          variant="secondary"
-          className=" active:scale-90 transition-transform sm:hidden ml-auto"
-          size="icon"
-        >
-          <Icons.play className="w-4 h-4" />
-        </Button>
-      
+
+      <Button
+        onClick={() => {
+          setSongID(id);
+        }}
+        variant="secondary"
+        className=" active:scale-90 transition-transform sm:hidden ml-auto"
+        size="icon"
+      >
+        <Icons.play className="w-4 h-4" />
+      </Button>
     </Card>
   );
 };

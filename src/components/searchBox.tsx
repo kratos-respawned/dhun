@@ -10,7 +10,8 @@ export function SearchBox({ className }: { className?: string }) {
     const searchRef=useRef<HTMLInputElement>(null);
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    router.push("/search?q="+searchRef.current?.value);
+    const query=searchRef.current?.value.replace(/\s/g,"+");
+    router.push("/search/"+query);
   };
   return (
     <div className={className}>

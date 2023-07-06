@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Image from "next/image";
 import { Card } from "./ui/card";
 import { cn } from "@/lib/utils";
@@ -35,22 +35,22 @@ export const AlbumCard = ({
   language,
   artists,
 }: AlbumCardProps) => {
-  const router=useRouter();
-  const imgURL =
+  const router = useRouter();
+  console.log(imageURL)
+  let imgURL =
     imageURL[2].link ||
     imageURL[1].link ||
     imageURL[0].link ||
-    "https://via.placeholder.com/150";
+    "/playlist-placeholder.webp";
+    if(imgURL==="https://www.jiosaavn.com/_i/3.0/artist-default-music.png") imgURL="/song-placeholder.webp"
   return (
     <Card
-    onClick={()=>{
-      if(type==="playlist")
-      router.push(`/album/${id}-playlist`)
-      else
-      router.push(`/album/${id}-album`)
-    }}
+      onClick={() => {
+        if (type === "playlist") router.push(`/album/${id}-playlist`);
+        else router.push(`/album/${id}-album`);
+      }}
       className={cn(
-        " overflow-clip border-none rounded-none w-[250px] ",
+        " overflow-clip border-none rounded-none w-[250px] active:scale-95 transition-transform cursor-pointer ",
         className
       )}
     >
@@ -74,11 +74,9 @@ export const AlbumCard = ({
         />
       </div>
       <div className="space-y-1 text-sm">
-        <a href={url}>
-          <h3 className="font-medium  mt-2 line-clamp-1">
-            {title.split("(")[0].replace("&#039;","'")}
-          </h3>
-        </a>
+        <h3 className="font-medium  mt-2 line-clamp-1">
+          {title.split("(")[0].replace("&#039;", "'")}
+        </h3>
         {songCount && (
           <p className="text-xs text-muted-foreground">
             {type} • {songCount} {Number(songCount) > 1 ? "Songs" : "Song"}

@@ -47,7 +47,7 @@ export default function RootLayout({
                 <Header />
                 <SearchBox className="sm:hidden flex-1 w-full mt-4 " />
               </div>
-              <div className="grow">{children}</div>
+              <div className="grow ">{children}</div>
             </MainLayout>
           </div>
         </Provider>

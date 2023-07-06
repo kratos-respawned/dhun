@@ -32,14 +32,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
     album.data?.image[2]?.link ||
     album?.data?.image[1]?.link ||
     album?.data?.image[0]?.link ||
-    "https://c.saavncdn.com/editorial/FeelGoodPop_20221122034344.jpg";
-    // return(
-    //   <>
-    //   {
-    //     JSON.stringify(album)
-    //   }
-    //   </>
-    // )
+    "/playlist-placeholder.webp";
   return (
     <section className="px-4  pt-4 space-y-12 mt-6 lg:space-y-0 lg:grid grid-cols-2 gap-x-4 ">
       <section className="mx-auto lg:mx-0 max-w-md ">
@@ -51,7 +44,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 alt={album.data.name}
-                className=" object-cover  transition-transform hover:scale-105  "
+                className=" object-cover object-center  transition-transform hover:scale-105  "
               />
             </AspectRatio>
           </div>

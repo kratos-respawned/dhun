@@ -16,6 +16,7 @@ interface SongProps extends React.HTMLAttributes<HTMLDivElement> {
     name: string;
   }[];
   type: string;
+  singer?: string;
   aspectRatio?: "portrait" | "square";
 }
 export const SongCard = ({
@@ -29,6 +30,8 @@ export const SongCard = ({
   artists,
   type,
   aspectRatio,
+  singer
+
 }: SongProps) => {
   const imgURL =
     imageURL[2].link ||
@@ -79,6 +82,11 @@ export const SongCard = ({
             .slice(0, 22)
             .concat("...")}
         </p>
+        {
+          singer && <p className=" line-clamp-1 text-xs text-muted-foreground">
+          {singer}
+        </p>
+        }
       </div>
     </Card>
   );
