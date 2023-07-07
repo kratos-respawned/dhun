@@ -11,14 +11,15 @@ type Payload = {
   url: string;
 };
 export const PlayerWrapper = () => {
-  const songID = useSongStore((state) => state.id);
+  const currentIndex = useSongStore((state) => state.currentSong);
+  const songs=useSongStore((state)=>state.playlist)
   const {
     data,
     error,
   }: {
     data: DownloadID;
     error: any;
-  } = useSWR(songID, fetcherByID, {
+  } = useSWR(songs[currentIndex]?.id, fetcherByID, {
     revalidateOnFocus: false,
     revalidateIfStale: false,
     onSuccess: (data: DownloadID) => {

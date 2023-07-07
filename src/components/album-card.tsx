@@ -36,7 +36,6 @@ export const AlbumCard = ({
   artists,
 }: AlbumCardProps) => {
   const router = useRouter();
-  console.log(imageURL)
   let imgURL =
     imageURL[2].link ||
     imageURL[1].link ||

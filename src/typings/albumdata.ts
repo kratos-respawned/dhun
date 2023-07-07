@@ -24,7 +24,7 @@ interface Image {
   link: string;
 }
 
-interface Song {
+export interface Song {
   id: string;
   name: string;
   album: Album;

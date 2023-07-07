@@ -7,6 +7,7 @@ import { AlbumData } from "@/typings/albumdata";
 import { Playlist } from "@/typings/playlist";
 import Image from "next/image";
 import { Balancer } from "react-wrap-balancer";
+import { AlbumPlayBtn } from "./album-play-btn";
 
 const getAlbumData = async (slug: string) => {
   const type = slug.split("-")[1];
@@ -69,16 +70,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
                 {album.data.songCount == "1" ? "Song" : "Songs"}
               </p>
             </div>
-            <div className="flex gap-2 items-center">
-              <Button
-                variant="default"
-                className="active:scale-90 transition-transform"
-                size={"icon"}
-              >
-                <Icons.play className="" />
-              </Button>
-              <Button variant="secondary">Share</Button>
-            </div>
+            <AlbumPlayBtn album={album.data.songs} />
           </div>
         </div>
       </section>

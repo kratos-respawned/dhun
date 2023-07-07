@@ -38,14 +38,21 @@ export const SongCard = ({
     imageURL[1].link ||
     imageURL[0].link ||
     "https://via.placeholder.com/150";
-  const setID = useSongStore((state) => state.setID);
-  const song=useSongStore((state)=>state.song)
+  const setCurrentIndex = useSongStore((state) => state.setCurrentSong);
+  const setsong=useSongStore((state)=>state.setPlaylist)
+  const songs=useSongStore((state)=>state.playlist)
+  const currentIndex=useSongStore((state)=>state.currentSong)
   return (
     <Card
-      onClick={() => {
-        if(song?.id===id) return
-        setID(id);
-      }}
+    onClick={() => {
+      console.log(songs[currentIndex]?.id, id);
+      if (songs.includes({ id })) {
+        if (songs[songs.length - 1].id === id) return;
+        setCurrentIndex(songs.findIndex((song) => song.id === id));
+        return;
+      }
+      setsong([...songs, { id }],songs.length);
+    }}
       className={cn(
         " overflow-clip border-none  rounded-none w-[250px] ",
         className

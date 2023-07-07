@@ -1,25 +1,28 @@
-import { DownloadID } from "@/typings/download";
 import { create } from "zustand";
-type Song = {
+
+type Playlist = {
   id: string;
-  title: string;
-  artist: string;
-  url: string;
 };
 interface SongStore {
-  song: Song;
-  id: string;
-  setID: (id: string) => void;
-  setSong: (song: Song) => void;
+  currentSong: number;
+  playlist: Playlist[];
+  volume: number;
+  setPlaylist: (playlist: Playlist[], index?: number) => void;
+  setCurrentSong: (currentSong: number) => void;
+  setVolume: (volume: number) => void;
 }
 export const useSongStore = create<SongStore>()((set) => ({
-  song: {
-    id: "",
-    title: "",
-    artist: "",
-    url: "",
+  playlist: [],
+  currentSong: 0,
+  volume: 0.5,
+  setPlaylist: (playlist, index) => {
+    if (!index) set({ playlist });
+    else
+      set({
+        playlist,
+        currentSong: index,
+      });
   },
-  id: "",
-  setID: (id: string) => set({ id: id }),
-  setSong: ( song: Song) => set({ song: song })
+  setCurrentSong: (currentSong) => set({ currentSong }),
+  setVolume: (volume) => set({ volume }),
 }));

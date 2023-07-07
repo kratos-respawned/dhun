@@ -8,6 +8,7 @@ import { Icons } from "./icons";
 import { Skeleton } from "./ui/skeleton";
 import { Slider } from "./ui/slider";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
+import { useSongStore } from "@/store/song-store";
 export const Player = ({
   url,
   album,
@@ -21,9 +22,13 @@ export const Player = ({
   album: string;
   downloadURL: string;
 }) => {
+  const currentSong = useSongStore((state) => state.currentSong);
+  const setCurrentIndex = useSongStore((state) => state.setCurrentSong);
+  const playlist=useSongStore((state)=>state.playlist)
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [volume, setVolume] = useState(0.5);
+  const volume=useSongStore((state)=>state.volume)
+  const setVolume=useSongStore((state)=>state.setVolume)
   const [barPostion, setBarPosition] = useState(0);
   const [downloading, setDownloading] = useState(false);
   const [link] = useState(url);
@@ -33,6 +38,11 @@ export const Player = ({
     },
     onend: () => {
       setIsPlaying(false);
+      if(currentSong===playlist.length-1){
+        setCurrentIndex(0);
+      }else{
+        setCurrentIndex(currentSong+1);
+      }
       console.log("end");
     },
     volume: volume,
@@ -105,6 +115,9 @@ export const Player = ({
         {/* middle controls */}
         <div className="flex flex-1  items-center justify-center gap-x-2 md:gap-x-4 ">
           <Button
+          onClick={
+            currentSong===0?()=>setCurrentIndex(playlist.length-1):()=>setCurrentIndex(currentSong-1)
+          }
             className="active:scale-90 select-none transition-transform"
             variant="secondary"
             size="icon"
@@ -141,6 +154,9 @@ export const Player = ({
             )}
           </Button>
           <Button
+            onClick={
+              currentSong===playlist.length-1?()=>setCurrentIndex(0):()=>setCurrentIndex(currentSong+1)
+            }
             className="active:scale-90  transition-transform"
             variant="secondary"
             size="icon"

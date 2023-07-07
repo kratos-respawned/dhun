@@ -4,6 +4,7 @@ import { Card } from "./ui/card";
 import { Button } from "./ui/button";
 import { Icons } from "./icons";
 import { useSongStore } from "@/store/song-store";
+import { useEffect } from "react";
 interface AlbumPageCardProps {
   name: string;
   id: string;
@@ -20,7 +21,10 @@ export const AlbumPageCard = ({
   duration,
   image,
 }: AlbumPageCardProps) => {
-  const setSongID = useSongStore((state) => state.setID);
+  const setCurrentIndex = useSongStore((state) => state.setCurrentSong);
+  const setsong = useSongStore((state) => state.setPlaylist);
+  const songs = useSongStore((state) => state.playlist);
+  const currentIndex = useSongStore((state) => state.currentSong);
   return (
     <Card className="border pb-0 overflow-hidden flex items-center gap-x-2 sm:gap-x-5 pr-4">
       <Image
@@ -44,7 +48,13 @@ export const AlbumPageCard = ({
           </p>
           <Button
             onClick={() => {
-              setSongID(id);
+              console.log(songs[currentIndex]?.id, id);
+              if (songs.includes({ id })) {
+                if (songs[songs.length - 1].id === id) return;
+                setCurrentIndex(songs.findIndex((song) => song.id === id));
+                return;
+              }
+              setsong([...songs, { id }],songs.length);
             }}
             variant="secondary"
             className=" active:scale-90 transition-transform ml-auto"
@@ -57,7 +67,13 @@ export const AlbumPageCard = ({
 
       <Button
         onClick={() => {
-          setSongID(id);
+          console.log(songs[currentIndex]?.id, id);
+          if (songs.includes({ id })) {
+            if (songs[songs.length - 1].id === id) return;
+            setCurrentIndex(songs.findIndex((song) => song.id === id));
+            return;
+          }
+          setsong([...songs, { id }],songs.length);
         }}
         variant="secondary"
         className=" active:scale-90 transition-transform sm:hidden ml-auto"
