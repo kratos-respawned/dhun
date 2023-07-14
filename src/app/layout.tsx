@@ -56,11 +56,11 @@ export default function RootLayout({
           <div className="  md:grid grid-cols-7 lg:grid-cols-11 overflow-hidden min-height-screen max-height-screen ">
             <Sidebar />
             <MainLayout>
-              <div className=" z-50 pb-5 bg-background sm:bg-transparent fixed top-0 left-0 right-0 px-5  sm:static ">
+              <div className=" z-50 pb-5 bg-background sm:bg-transparent standalone:fixed top-0 left-0 right-0 px-5  sm:static ">
                 <Header />
                 <SearchBox className="sm:hidden flex-1 w-full mt-4 " />
               </div>
-              <div className="grow mt-28 sm:mt-0 ">{children}</div>
+              <div className="grow standalone:mt-28 sm:mt-0 ">{children}</div>
             </MainLayout>
           </div>
         </Provider>
