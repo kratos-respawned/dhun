@@ -3,6 +3,8 @@ import Image from "next/image";
 import { Card } from "./ui/card";
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import fetchMusic from "@/lib/apiFetcher";
 interface AlbumCardProps extends React.HTMLAttributes<HTMLDivElement> {
   imageURL: {
     link: string;
@@ -46,7 +48,11 @@ export const AlbumCard = ({
     <Card
       onClick={() => {
         if (type === "playlist") router.push(`/album/${id}-playlist`);
-        else router.push(`/album/${id}-album`);
+        else if(type==="album") router.push(`/album/${id}-album`);
+        else {
+          // console.log(type);
+          router.push(`/album/artists/${id}`)
+        };
       }}
       className={cn(
         " overflow-clip border-none rounded-none w-[250px] active:scale-95 transition-transform cursor-pointer ",

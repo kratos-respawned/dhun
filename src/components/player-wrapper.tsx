@@ -2,8 +2,8 @@
 import { useSongStore } from "@/store/song-store";
 import { Player } from "./Player";
 import useSWR from "swr";
-import { fetcherByID } from "@/lib/fetcher";
 import { DownloadID } from "@/typings/download";
+import fetchMusic from "@/lib/apiFetcher";
 type Payload = {
   id: string;
   title: string;
@@ -13,13 +13,14 @@ type Payload = {
 export const PlayerWrapper = () => {
   const currentIndex = useSongStore((state) => state.currentSong);
   const songs=useSongStore((state)=>state.playlist)
+  
   const {
     data,
     error,
   }: {
     data: DownloadID;
     error: any;
-  } = useSWR(songs[currentIndex]?.id, fetcherByID, {
+  } = useSWR(songs[currentIndex]?.id, fetchMusic, {
     revalidateOnFocus: false,
     revalidateIfStale: false,
     onSuccess: (data: DownloadID) => {

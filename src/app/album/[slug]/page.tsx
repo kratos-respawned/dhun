@@ -1,7 +1,5 @@
 import { AlbumPageCard } from "@/components/album-page-card";
-import { Icons } from "@/components/icons";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
-import { Button } from "@/components/ui/button";
 import { music } from "@/lib/music";
 import { AlbumData } from "@/typings/albumdata";
 import { Playlist } from "@/typings/playlist";
@@ -15,7 +13,12 @@ const getAlbumData = async (slug: string) => {
   if (type == "album") {
     const { data } = await music(`albums?id=${id}`);
     return data as AlbumData;
-  } else {
+  } else 
+  if (type == "artist") {
+    const { data } = await music(`artists?id=${id}`);
+    return data as AlbumData;
+  } else 
+  {
     const { data } = await music(`playlists?id=${id}`);
     return data as Playlist;
   }

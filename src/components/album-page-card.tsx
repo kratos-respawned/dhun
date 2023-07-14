@@ -40,7 +40,7 @@ export const AlbumPageCard = ({
           {name.split("(")[0].slice(0, 22).replace("&#039;", "'")}
         </h3>
         <p className="text-muted-foreground text-xs sm:text-base line-clamp-1">
-          {primaryArtists.slice(0, 15)}
+          {primaryArtists.slice(0, 30)}
         </p>
         <div className=" hidden sm:flex justify-between items-center">
           <p className="text-muted-foreground">
