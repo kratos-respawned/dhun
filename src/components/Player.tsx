@@ -320,7 +320,7 @@ export const Player = ({
             onValueChange={(e) => {
               sound.seek(e[0]);
             }}
-            className="w-full h-1.5 rounded-none  player"
+            className="w-full h-1.5 rounded-none cursor-pointer  player"
           />
         </div>
       </div>

@@ -1,6 +1,7 @@
 import { music } from "@/lib/music";
 import { NextResponse } from "next/server";
 export const dynamic = "force-dynamic";
+export const runtime="edge"
 export async function POST(req: Request) {
   const { searchParams } = new URL(req.url)
   console.log(searchParams)
